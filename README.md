@@ -9,7 +9,7 @@ Convert a CSV file to a JSON file
 
 You can view the csv_to_json_example.png for a quick reference. 
 
-![https://github.com/Uncle-Uee/csv_to_json/blob/master/csv_to_json_example.png]
+[CSV to JSON Example](csv_to_json_example.png)
 
 # Misc
 You can convert the csv_to_json.py to an exe. I used PyInstaller and the following command to get an exe on Windows 10. 
