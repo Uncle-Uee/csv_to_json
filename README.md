@@ -1,4 +1,4 @@
-# csv_to_json
+# CSV to Json
 Convert a CSV file to a JSON file
 
 # How to
