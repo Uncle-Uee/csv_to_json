@@ -1,29 +1,15 @@
-import ast
 import json
 
 
 def type_conversion(value = ""):
     """
     Convert a String to its Correct Type using the Builtin Json Package.
-    :param value:
+    :param value: A string Value to Convert.
     :return:
     """
     try:
-        value = "false" if value == "False" else "true" if value == "True" else value
+        value = "false" if value == "False" else "true" if value == "True" else "" if value == "null" else value
         return json.loads(value)
-    except ValueError:
-        return value
-
-
-def adv_type_conversion(value = ""):
-    """
-    Convert a String to its Correct Type using the Builtin ast Package.
-    :param value:
-    :return:
-    """
-    try:
-        value = "False" if value == "false" else "True" if value == "true" else value
-        return ast.literal_eval(value)
     except ValueError:
         return value
 
@@ -31,26 +17,27 @@ def adv_type_conversion(value = ""):
 def types_conversion(values = list):
     """
     Convert a List of Values to there Correct Types using the Builtin Json Package.
-    :param values:
+    :param values: A string Value to Convert.
     :return:
     """
     for value in values:
         try:
-            value = "false" if value == "False" else "true" if value == "True" else value
+            value = "false" if value == "False" else "true" if value == "True" else "" if value == "null" else value
             yield json.loads(value)
         except ValueError:
             yield value
 
 
-def adv_types_conversion(values = list):
+def adv_type_conversion(value = "", allow_empty_string = True, allow_null_value = True):
     """
-    Convert a List of Values to there Correct Types using the Builtin ast Package.
-    :param values:
-    :return:
-    """
-    for value in values:
-        try:
-            value = "False" if value == "false" else "True" if value == "true" else value
-            yield ast.literal_eval(value)
-        except ValueError:
-            yield value
+        Convert a String to its Correct Type using the Builtin Json Package.
+        :param value: A string Value to Convert.
+        :param allow_empty_string: Allow empty string Values.
+        :param allow_null_value: Allow null values.
+        :return:
+        """
+    try:
+        value = "false" if value == "False" else "true" if value == "True" else "null" if value == "" and not allow_empty_string else "" if value == "null" and not allow_null_value else value
+        return json.loads(value)
+    except ValueError:
+        return value
