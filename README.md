@@ -5,10 +5,10 @@ Convert a CSV file to a JSON file
 1. Run the python script csv_to_json.py
 2. Choose an Option: 1, 2, 3 or 4
 3. Enter Y or N to see additional options.
-3.1 Enter Y or N to allow empty strings or null values in your output json file.
-4. Enter a path location (c:/Users/Alias/Desktop/cities.csv) of the csv file you wish to convert to json. Otherwise if you place your csv file and the source code within the same directory you only need to specify the name of the csv file (cities.csv).
-5. Enter a path location to where the Json File should be saved to or Enter a just a Json filename to save the Json file in the same location as the Script.
-6. Conversion Complete! I hope :)
+4. Enter Y or N to allow empty strings or null values in your output json file.
+5. Enter a path location (c:/Users/Alias/Desktop/cities.csv) of the csv file you wish to convert to json. Otherwise if you place your csv file and the source code within the same directory you only need to specify the name of the csv file (cities.csv).
+6. Enter a path location to where the Json File should be saved to or Enter a just a Json filename to save the Json file in the same location as the Script.
+7. Conversion Complete! I hope :)
 
 # Basic GUI Use
 1. Open the GUI
