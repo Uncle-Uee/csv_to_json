@@ -1,5 +1,5 @@
 # CSV to Json
-Convert a CSV file to a JSON file
+Convert a CSV file to a JSON file.
 
 # Basic Console Use
 1. Run the python script csv_to_json.py
@@ -29,9 +29,9 @@ Additionally you are required to copy the "csv_to_json.py" and "convert_to_type.
 However, if you can find a solution to that problem please let me know, I will definitely appreciate it.
 
 You can convert the csv_to_json.py, csv_to_json_console and csv_to_json_gui to an exe using the commands below. 
-pyinstaller --onefile --console --icon=croissant.ico csv_to_json.py
-pyinstaller --onefile --console --icon=croissant.ico csv_to_json_gui.py
-pyinstaller --onefile --console --icon=croissant.ico csv_to_json_console.py
+pyinstaller --onefile --console --icon=resources/icons/croissant.ico csv_to_json.py
+pyinstaller --onefile --console --icon=resources/icons/croissant.ico csv_to_json_gui.py
+pyinstaller --onefile --console --icon=resources/icons/croissant.ico csv_to_json_console.py
 
 # Pending Features
 1. csv_to_json_console with full range of accepted arguments.
@@ -39,3 +39,6 @@ pyinstaller --onefile --console --icon=croissant.ico csv_to_json_console.py
 # Notes
 The csv_to_json.py and the convert_to_type.py are the core scripts. These scripts are all you need to do your csv to json conversion. 
 You can copy these scripts together and paste them anywhere you want and you will be able to use there functions. It would be ideal to copy them to "Python/Scripts" folder so that you can use there functions from within any of your other python projects.
+
+# Important
+At this point in time, the conversion requires your csv file to have a header line.
