@@ -34,7 +34,7 @@ pyinstaller --onefile --console --icon=croissant.ico csv_to_json_gui.py
 pyinstaller --onefile --console --icon=croissant.ico csv_to_json_console.py
 
 # Pending Features
-1. Complete the csv_to_json_console with full range of possible accepted arguments.
+1. csv_to_json_console with full range of accepted arguments.
 
 # Notes
 The csv_to_json.py and the convert_to_type.py are the core scripts. These scripts are all you need to do your csv to json conversion. 
