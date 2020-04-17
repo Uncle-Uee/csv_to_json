@@ -1,12 +1,12 @@
 """
-Created By: Uee
+Created By: Ubaidullah Effendi-Emjedi
 Date: 27 October 2019
 """
 
 import json
 
 
-def type_conversion(value = ""):
+def type_conversion(value=""):
     """
     Convert a String to its Correct Type using the Builtin Json Package.
     :param value: A string Value to Convert.
@@ -19,7 +19,7 @@ def type_conversion(value = ""):
         return value
 
 
-def types_conversion(values = list):
+def types_conversion(values=list):
     """
     Convert a List of Values to there Correct Types using the Builtin Json Package.
     :param values: A string Value to Convert.
@@ -33,7 +33,7 @@ def types_conversion(values = list):
             yield value
 
 
-def adv_type_conversion(value = "", allow_empty_string = True, allow_null_value = True):
+def adv_type_conversion(value="", allow_empty_string=True, allow_null_value=True):
     """
         Convert a String to its Correct Type using the Builtin Json Package.
         :param value: A string Value to Convert.

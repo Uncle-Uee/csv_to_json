@@ -1,41 +1,107 @@
 # CSV to Json
-Convert a CSV file to a JSON file
+Convert a CSV to a JSON file.
 
-# Basic Console Use
-1. Run the python script csv_to_json.py
-2. Choose an Option: 1, 2, 3 or 4
-3. Enter Y or N to see additional options.
-3.1 Enter Y or N to allow empty strings or null values in your output json file.
-4. Enter a path location (c:/Users/Alias/Desktop/cities.csv) of the csv file you wish to convert to json. Otherwise if you place your csv file and the source code within the same directory you only need to specify the name of the csv file (cities.csv).
-5. Enter a path location to where the Json File should be saved to or Enter a just a Json filename to save the Json file in the same location as the Script.
-6. Conversion Complete! I hope :)
+## Getting Started
+These instructions below will guide you on how to use and compile either the csv_to_json_gui or csv_to_json_console.
 
-# Basic GUI Use
-1. Open the GUI
-2. Choose your CSV file.
-3. Choose you Json Output File save Location.
-4. Set you additional options: Allow Empty Strings, Allow Null Values, Choose a CSV Column as a Unique Identifier, Root Data.
-5. Click Convert, and everything should be OOOOOK!
+## Basic Console Use
+The following instructions below will guide you on how to use the csv_to_json_console.py script through the command prompt or built as an executable.
 
-# Build an Executable
-Requirements
+### Command Line Arguments
+    1. Simple Conversion:
+    Command: "csv_to_json_console csv_file.csv parsed.json"
+		- where csv_file.csv & parsed.json, are the locations to your csv file and the save location of 
+		your json file.
+		- if the files of the csv and the python executable or script are in the same place you can just use 
+		the names of the files.
+
+    2. Advanced Conversion with Unique Identifier:
+	Command: "csv_to_json_console csv_file.csv parsed.json -c Column Tag"
+		- where Column Tag, is the name of a Header Tag in the CSV File
+	Output: Using State as the Unique Identifier Column
+    {
+        "Western Cape" : {
+            "City" : "Cape Town",
+            "Population" : "4.62 million"
+        }
+    }
+
+    3. Advanced Conversion with Root:
+	Command: "csv_to_json_console csv_file.csv parsed.json -r Root"
+		- where Root, is a custom tag you enter.
+	Output: Using a Root Tag where root = "States"
+    {
+        "States" : {
+            "State" : "Western Cape"
+            "City" : "Cape Town",
+            "Population" : "4.62 million"
+        }
+    }
+
+    4. Advanced Conversion with Root and UID:
+	Command: "csv_to_json_console csv_file.csv parsed.json -c Column Tag -r Root"
+	Output: Using a Root Tag and Column as Unique Identifier
+	{
+	    "States" : {
+	        "Western Cape" : {
+	            "City" : "Cape Town",
+	            "Population" : "4.62 million"
+	        }
+	    }
+	}
+
+    5. Advanced Conversion with Flags:
+	Command: "csv_to_json_console csv_file.csv parsed.json -nv"
+		- where -nv, Replace all null values with Empty Strings
+
+	Command: "csv_to_json_console csv_file.csv parsed.json -es"
+		- where -es, Replace all empty strings with Null Values
+
+	Command: "csv_to_json_console csv_file.csv parsed.json -es -nv"
+		- where -nv, Replace all null values with Empty Strings
+		- where -es, Replace all empty strings with Null Values
+
+    6. Super Advanced Conversion:
+	Command: "csv_to_json_console csv_file.csv parsed.json -c Column Tag -r Root -es -nv"
+		- Note: you can include and exclude which ever optional arguments as you require.
+		
+## Basic UI Use
+> Important: Make sure PyQT5 is installed. 
+1. Run the csv_to_json_gui.py script or compile and run the executable version of it.
+2. Select your CSV File
+3. Select your Json Save Location
+4. Additional arguments include
+   1. Column Tag
+   2. Root Tag
+   3. Removal of Empty Strings and Null Values
+5. Click Convert
+
+## Build
+Requirements:
+```
 PyQT5 -version 5.12.1
 PyQT5-Tools
 PyQT5-Sip
 PyQT5-Stub -version 5.12.1
 PyInstaller
+```
 
-Additionally you are required to copy the "csv_to_json.py" and "convert_to_type.py" to the "Python/Scripts/" folder as well. I ran into problems with the required functions in those scripts not being found once an executable was made.
-However, if you can find a solution to that problem please let me know, I will definitely appreciate it.
+You can convert the csv_to_json_console or csv_to_json_gui to an exe using the commands below.
 
-You can convert the csv_to_json.py, csv_to_json_console and csv_to_json_gui to an exe using the commands below. 
-pyinstaller --onefile --console --icon=croissant.ico csv_to_json.py
-pyinstaller --onefile --console --icon=croissant.ico csv_to_json_gui.py
+With Icon:
+```
 pyinstaller --onefile --console --icon=croissant.ico csv_to_json_console.py
+pyinstaller --onefile --console --icon=croissant.ico csv_to_json_gui.py
+```
 
-# Pending Features
-1. Complete the csv_to_json_console with full range of possible accepted arguments.
+Without Icon:
+```
+pyinstaller --onefile --console csv_to_json_console.py
+pyinstaller --onefile --console csv_to_json_gui.py
+```
+You replace croissant icon with any other icon you wish.
+## License
+This project is licensed under the MIT License - set the [LICENSE.md](LICENSE.md) file for details
 
-# Notes
-The csv_to_json.py and the convert_to_type.py are the core scripts. These scripts are all you need to do your csv to json conversion. 
-You can copy these scripts together and paste them anywhere you want and you will be able to use there functions. It would be ideal to copy them to "Python/Scripts" folder so that you can use there functions from within any of your other python projects.
+## Authors
+[Ubaidullah Effendi-Emjedi](https://www.linkedin.com/in/ubaidullah-effendi-emjedi-202494183/)

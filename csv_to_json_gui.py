@@ -1,5 +1,5 @@
 """
-Created By: Uee
+Created By: Ubaidullah Effendi-Emjedi
 Date: 27 October 2019
 """
 
@@ -7,13 +7,13 @@ from PyQt5 import QtWidgets
 from PyQt5.QtGui import QIcon
 from PyQt5.QtWidgets import QApplication, QMainWindow, QAction, qApp, QFileDialog
 
-from csv_to_json import *
+from src.converters.csv_to_json import *
 
 import sys
 import os
 
 
-class csv_to_json_window(QMainWindow):
+class CsvToJsonWindow(QMainWindow):
     """
     CSV To JSON Window Class.
     """
@@ -37,7 +37,7 @@ class csv_to_json_window(QMainWindow):
     """ CONSTRUCTOR """
 
     def __init__(self):
-        super(csv_to_json_window, self).__init__()
+        super(CsvToJsonWindow, self).__init__()
         self.main_window_setup()
         self.menu_bar()
         self.ui()
@@ -74,13 +74,13 @@ class csv_to_json_window(QMainWindow):
         :return:
         """
         # CSV File Label
-        self.csv_file_label = self.create_label(orientation = (25, 30, 625, 25), text = "CSV File Location")
+        self.csv_file_label = self.create_label(orientation=(25, 30, 625, 25), text="CSV File Location")
 
         # CSV File TextBox
-        self.csv_file_text_box = self.create_text_box(orientation = (25, 55, 650, 25),
-                                                      hint = "CSV Filename or Location")
+        self.csv_file_text_box = self.create_text_box(orientation=(25, 55, 650, 25),
+                                                      hint="CSV Filename or Location")
         # CSV File Button
-        self.csv_file_button_open = self.create_button(orientation = (685, 55, 75, 25), text = "Open")
+        self.csv_file_button_open = self.create_button(orientation=(685, 55, 75, 25), text="Open")
         self.csv_file_button_open.clicked.connect(self.open_file_dialog)
 
     def open_file_dialog(self):
@@ -98,14 +98,14 @@ class csv_to_json_window(QMainWindow):
         :return:
         """
         # Json File Label
-        self.json_file_label = self.create_label(orientation = (25, 80, 625, 25), text = "Json File Save Location")
+        self.json_file_label = self.create_label(orientation=(25, 80, 625, 25), text="Json File Save Location")
 
         # Json File TextBox
-        self.json_file_text_box = self.create_text_box(orientation = (25, 105, 650, 25),
-                                                       hint = "Json Filename or Save Location")
+        self.json_file_text_box = self.create_text_box(orientation=(25, 105, 650, 25),
+                                                       hint="Json Filename or Save Location")
 
         # Json File Button
-        self.json_file_button_save = self.create_button(orientation = (685, 105, 75, 25), text = "Save")
+        self.json_file_button_save = self.create_button(orientation=(685, 105, 75, 25), text="Save")
         self.json_file_button_save.clicked.connect(self.save_file_dialog)
 
     def save_file_dialog(self):
@@ -119,8 +119,8 @@ class csv_to_json_window(QMainWindow):
 
     def allow_empty_strings_ui(self):
         # Check Box
-        self.allow_empty_strings = self.create_check_box(orientation = (25, 145, 250, 25),
-                                                         text = "Allow Empty Strings?")
+        self.allow_empty_strings = self.create_check_box(orientation=(25, 145, 250, 25),
+                                                         text="Allow Empty Strings?")
 
         self.allow_empty_strings.toggle()
         print("Allow Empty Strings: " + str(self.allow_empty_strings.isChecked()) + "\n")
@@ -132,8 +132,8 @@ class csv_to_json_window(QMainWindow):
 
     def allow_null_values_ui(self):
         # Check Box
-        self.allow_null_values = self.create_check_box(orientation = (165, 145, 250, 25),
-                                                       text = "Allow Null Values?")
+        self.allow_null_values = self.create_check_box(orientation=(165, 145, 250, 25),
+                                                       text="Allow Null Values?")
 
         self.allow_null_values.toggle()
         print("Allow Null Values: " + str(self.allow_null_values.isChecked()) + "\n")
@@ -145,26 +145,26 @@ class csv_to_json_window(QMainWindow):
 
     def use_unique_id_ui(self):
         # Check Box
-        self.use_unique_id = self.create_check_box(orientation = (25, 175, 250, 25),
-                                                   text = "Use CSV Column Tag as a Unique ID?")
+        self.use_unique_id = self.create_check_box(orientation=(25, 175, 250, 25),
+                                                   text="Use CSV Column Tag as a Unique ID?")
 
         self.use_unique_id.stateChanged.connect(self.unique_id_ui)
 
         # Unique ID Text
-        self.unique_id = self.create_text_box(orientation = (25, 200, 100, 25), hint = "Column Tag")
+        self.unique_id = self.create_text_box(orientation=(25, 200, 100, 25), hint="Column Tag")
         self.unique_id.setReadOnly(True)
 
         print("Use Unique ID's: " + str(self.use_unique_id.isChecked()) + "\n")
 
     def root_data_ui(self):
         # Check Box
-        self.root_data = self.create_check_box(orientation = (250, 175, 250, 25),
-                                               text = "Root Json Data?")
+        self.root_data = self.create_check_box(orientation=(250, 175, 250, 25),
+                                               text="Root Json Data?")
 
         self.root_data.stateChanged.connect(self.root_key_ui)
 
         # Root Key Edit Text
-        self.root_key = self.create_text_box(orientation = (250, 200, 100, 25), hint = "Root Key")
+        self.root_key = self.create_text_box(orientation=(250, 200, 100, 25), hint="Root Key")
 
         print("Root the Data: " + str(self.root_data.isChecked()) + "\n")
 
@@ -187,7 +187,7 @@ class csv_to_json_window(QMainWindow):
             self.root_key.setText("")
 
     def convert_csv_to_json_ui(self):
-        self.converter_button = self.create_button(orientation = (25, 245, 75, 30), text = "Convert")
+        self.converter_button = self.create_button(orientation=(25, 245, 75, 30), text="Convert")
 
         self.converter_button.clicked.connect(self.convert_csv_to_json)
 
@@ -256,7 +256,7 @@ class csv_to_json_window(QMainWindow):
         save_action.triggered.connect(self.save_file_dialog)
         quit_action.triggered.connect(lambda: (qApp.quit(), print("Quiting Application!")))
 
-    def create_label(self, orientation = (0, 0, 0, 0), text = ""):
+    def create_label(self, orientation=(0, 0, 0, 0), text=""):
         """
         Create a Label.
         :param orientation: Orientation of the label: X,Y Position and Width and Height
@@ -267,7 +267,7 @@ class csv_to_json_window(QMainWindow):
         label.setGeometry(orientation[0], orientation[1], orientation[2], orientation[3])
         return label
 
-    def create_button(self, orientation = (0, 0, 0, 0), text = "button"):
+    def create_button(self, orientation=(0, 0, 0, 0), text="button"):
         """
         Create a Button.
         :param orientation: Orientation of the button: X,Y Position and Width and Height
@@ -278,7 +278,7 @@ class csv_to_json_window(QMainWindow):
         button.setGeometry(orientation[0], orientation[1], orientation[2], orientation[3])
         return button
 
-    def create_check_box(self, orientation = (0, 0, 0, 0), text = ""):
+    def create_check_box(self, orientation=(0, 0, 0, 0), text=""):
         """
         Create a Check Box Option.
         :param orientation: Placement of the Check Box.
@@ -291,7 +291,7 @@ class csv_to_json_window(QMainWindow):
         check_box.adjustSize()
         return check_box
 
-    def create_text_box(self, orientation = (0, 0, 0, 0), text = "", hint = ""):
+    def create_text_box(self, orientation=(0, 0, 0, 0), text="", hint=""):
         """
         Create a Text Box Input Field
         :param orientation: Placement of the Text Box Field.
@@ -307,7 +307,7 @@ class csv_to_json_window(QMainWindow):
 
 def window():
     application = QApplication(sys.argv)
-    win = csv_to_json_window()
+    win = CsvToJsonWindow()
     win.show()
     sys.exit(application.exec_())
 
